@@ -1,0 +1,19 @@
+dblp_ppr_cite
+---------------
+
+paperid
+citationpaperId
+
+pprDetComp
+
+select pd.refid, pd.citationCount, pc.actualCount from dblp_pprdet pd, (select p.id as paperid, count(*) as actualCount from dblp_pub_se p, dblp_ppr_cite c where p.id = c.paperid AND c.citationPaperId != -1 group by p.id ) as pc where pd.refid = pc.paperid and pd.citationCount*0.7 <= pc.actualCount
+
+select pd.refid as id, pd.citationCount AS citationcount from dblp_pprdet pd, (select p.id as id, count(*) as citationCount from dblp_pub_se p, dblp_ppr_cite c where p.id = c.paperid AND c.citationPaperId != -1 group by p.id ) as pc 
+
+SELECT tp.tid, t.keyword, citationcount FROM 
+
+(SELECT td.tid as tid, SUM(pc.citationCount) as citationcount FROM dblp_doctopic_SE AS td LEFT JOIN 
+    (SELECT p.id as id, count(*) as citationCount FROM dblp_ppr_cite c, dblp_pub_se p WHERE p.id = c.paperid AND c.citationPaperId != -1 AND p.year >= 1975 AND p.year <=1977 GROUP BY p.id ) AS pc 
+    ON td.id = pc.id GROUP BY td.tid) AS tp, dblp_topic_SE AS t 
+
+WHERE t.tid = tp.tid AND t.istop = 1 order by tp.tid

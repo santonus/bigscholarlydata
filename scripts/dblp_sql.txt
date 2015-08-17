@@ -1,0 +1,150 @@
+SELECT t1.author, t1.pcount, t1.miny, t1.maxy, t1.venuecnt, t2.coauthpcnt, t3.distauthcnt FROM ( SELECT author, COUNT(author) as pcount, MIN(year) as miny, MAX(year) as maxy, COUNT(distinct source_id) as venuecnt FROM dblp_author_ref_new as a, dblp_pub_se as p WHERE a.id = p.id group by author ) as t1, ( SELECT a.author as author, count(pcoauth.pid) as coauthpcnt FROM dblp_author_ref_new as a,  (SELECT atmp.id as pid, count(*) as coauth FROM dblp_author_ref_new as atmp, dblp_pub_se as p WHERE atmp.id = p.id GROUP BY atmp.id) as pcoauth  WHERE a.id = pcoauth.pid AND pcoauth.coauth > 1 GROUP BY a.author) as t2, ( SELECT a.author as author, COUNT(distinct coa.author)-1 as distauthcnt FROM dblp_author_ref_new a, dblp_author_ref_new coa, dblp_pub_se as p  WHERE a.id = coa.id AND a.id = p.id GROUP BY a.author) as t3 WHERE t1.author= t2.author AND t1.author = t3.author limit 30
+
+
+
+ASE is kbse
+FSE is also "SIGSOFT FSE" and "ESEC/SIGSOFT FSE
+SEFM is sefm
+
+sec 5.5 - pp 9/pp 10
+
+create table tmpt select ca from (select distinct author as ca from dblp_author_ref_new a, dblp_pub_se p where a.id = p.id and p.year >= 1986 and p.year <= 1988) as currauths, (select distinct author as pa from dblp_author_ref_new a, dblp_pub_se p where a.id = p.id and  p.year <= 1985) as pastauths where currauths.ca = pastauths.pa
+
+SELECT a.author as author, coa.author as collabauth, COUNT(coa.author) as collabcnt FROM dblp_author_ref_new a, dblp_author_ref_new coa, tmpt t1, tmpt t2, dblp_pub_se as p WHERE a.id = coa.id AND a.id = p.id AND a.author != coa.author AND a.author = t1.ca AND coa.author = t2.ca AND p.year <= 1979;
++------------------------+
+
+
+Friedrich L. Bauer, Vaclav Bajlich
+
+SELECT t1.author, t1.pcount, t1.miny, t1.maxy, t1.venuecnt, t2.distauthcnt FROM ( SELECT author, COUNT(author) as pcount, MIN(year) as miny, MAX(year) as maxy, COUNT(distinct source_id) as venuecnt FROM dblp_author_ref_new as a, dblp_pub_se as p WHERE a.id = p.id AND p.year >= 1975 and p.year <= 1979 group by author ) as t1, ( SELECT a.author as author, COUNT(distinct coa.author)-1 as distauthcnt FROM dblp_author_ref_new a, dblp_author_ref_new coa, dblp_pub_se as p  WHERE a.id = coa.id AND a.id = p.id AND p.year >= 1975 and p.year <= 1979 GROUP BY a.author) as t2, tmpt  WHERE t1.author= t2.author AND t1.author = tmpt.ca
+----
+SELECT t1.author, t1.pcount, t1.miny, t1.maxy, t1.venuecnt, IFNULL(t2.coauthpcnt,0), t3.distauthcnt FROM 
+( SELECT author, COUNT(author) as pcount, MIN(year) as miny, MAX(year) as maxy, COUNT(distinct source_id) as venuecnt FROM dblp_author_ref_new as a, dblp_pub_se as p WHERE a.id = p.id AND p.year >= 1975 and p.year <= 1985 group by author ) as t1 
+LEFT JOIN 
+( SELECT a.author as author, count(pcoauth.pid) as coauthpcnt FROM dblp_author_ref_new as a,  
+   (SELECT atmp.id as pid, count(*) as coauth FROM dblp_author_ref_new as atmp, dblp_pub_se as p WHERE atmp.id = p.id AND p.year >= 1975 and p.year <= 1985 GROUP BY atmp.id) as pcoauth  WHERE a.id = pcoauth.pid AND pcoauth.coauth > 1 GROUP BY a.author) as t2 
+   ON t1.author= t2.author, 
+( SELECT a.author as author, COUNT(distinct coa.author)-1 as distauthcnt FROM dblp_author_ref_new a, dblp_author_ref_new coa, dblp_pub_se as p  WHERE a.id = coa.id AND a.id = p.id AND p.year >= 1975 and p.year <= 1985 GROUP BY a.author) as t3, 
+tmpt  WHERE t1.author= t3.author AND t1.author = tmpt.ca
+
+-------------------
+SELECT a.author as author, coa.author as collabauth, COUNT(coa.author) as collabcnt FROM dblp_author_ref_new a, dblp_author_ref_new coa, tmpt t1, tmpt t2, dblp_pub_se as p WHERE a.id = coa.id AND a.id = p.id AND a.author != coa.author AND a.author = t1.ca AND coa.author = t2.ca AND p.year <= 1979 group by coa.author (43)
+
+SELECT a.author as author, coa.author as collabauth, COUNT(coa.author) as collabcnt FROM dblp_author_ref_new a, dblp_author_ref_new coa, tmpt t1, tmpt t2, dblp_pub_se as p WHERE a.id = coa.id AND a.id = p.id AND a.author != coa.author AND a.author = t1.ca AND coa.author = t2.ca AND p.year >= 1980 AND p.year <= 1982 GROUP BY coa.author (46)
+
+
+table citationxref {
+id int(8) : NOT NULL
+cited_id int(8): NOT NULL
+title longtext : can be NULL
+}
+Values of id MUST be from dblp_pub_se.id. Values of cited_id should be from dblp_pub_se.id. In some cases it can be a special value 0. 
+A tuple <id, citedId> in citationxref implies that the paper referenced by <id> cites another paper referenced by <cited_id>. If the cited paper is not in the dblp database, the value should be 0.
+
+For each paper p in dblp_pub_se do {
+Get the id, doi for p
+Crawl to get the list of references R using the doi. 
+For each reference r do {
+ get the doi of r and search dblp_pub_ref table with this doi.
+ if the record exists {
+    cited_id <- r.id
+    insert a record <p.id, cited_id, null> in citationxref
+ }
+ else {
+    text = doi;
+    insert a record <p.id, 0, text> in citationxref;
+ }
+}
+
+table authorDetails {
+ author varchar(70) - fkey of dblp_author_ref_new.ref
+ h-factor int
+ ??-factor int  // I forgot the other impact factor
+}
+---
+Latest Q4
+SELECT t1.author, t1.pcount, t1.miny, t1.maxy, t1.venuecnt, IFNULL(t2.coauthpcnt,0), t3.distauthcnt FROM ( SELECT author, COUNT(author) as pcount, MIN(year) as miny, MAX(year) as maxy, COUNT(distinct source_id) as venuecnt FROM dblp_author_ref_new as a, dblp_pub_se as p WHERE a.id = p.id AND p.year >= 1975 and p.year <= 2011 group by author ) as t1 LEFT JOIN ( SELECT a.author as author, count(pcoauth.pid) as coauthpcnt FROM dblp_author_ref_new as a,  (SELECT atmp.id as pid, count(*) as coauth FROM dblp_author_ref_new as atmp, dblp_pub_se as p WHERE atmp.id = p.id AND p.year >= 1975 and p.year <= 2011 GROUP BY atmp.id) as pcoauth  WHERE a.id = pcoauth.pid AND pcoauth.coauth > 1 GROUP BY a.author) as t2 ON t1.author= t2.author, ( SELECT a.author as author, COUNT(distinct coa.author)-1 as distauthcnt FROM dblp_author_ref_new a, dblp_author_ref_new coa, dblp_pub_se as p  WHERE a.id = coa.id AND a.id = p.id AND p.year >= 1975 and p.year <= 2011 GROUP BY a.author) as t3 WHERE t1.author= t3.author
+
+
+
+==========================================================================================================
+Tier 1 conference
+
+EDBT : International Conference on Extending Database Technology (source_id=edbt)
+ICDE  : International Conference on Data Engineering (source_id=icde)
+3441
+ICDM  : IEEE International Conference on Data Mining (source_id=icdm)
+2021
+ICDT  : International Conference on Database Theory (source_id=icdt)
+total: 426
+ICML  : International Conference on Machine Learning (source_id=icml)
+total: 2295
+KDD : ACM International Conference on Knowledge Discovery & Data Mining (source_id = "kdd")
+21 conf under KDD, total 1930: 
+SDM : SIAM conference on Data Mining
++--------+----------+
+| source | count(*) |
++--------+----------+
+| SDM    |      641 |
++--------+----------+
+SIGMOD/PODS : International Conference on Management of Data/Principles of Database Systems
++--------+----------+
+| source | count(*) |
++--------+----------+
+| NULL   |       22 |
+| PODS   |      940 |
++--------+----------+
++------------------------------------------------------------------+----------+
+| source                                                           | count(*) |
++------------------------------------------------------------------+----------+
+| NULL                                                             |       31 |
+| Computer Architecture for Non-Numeric Processing                 |       47 |
+| Data Bases for Interactive Design                                |       20 |
+| Databases for Business and Office Applications                   |       25 |
+| DBTest                                                           |       36 |
+| Engineering Design Applications                                  |       13 |
+| FDT - Bulletin of ACM SIGFIDET                                   |      100 |
+| FDT - Bulletin of ACM SIGMOD                                     |       45 |
+| KEYS                                                             |       21 |
+| NNP                                                              |        3 |
+| SIGFIDET Workshop                                                |       70 |
+| SIGFIDET Workshop, Vol. 1                                        |        1 |
+| SIGFIDET Workshop, Vol. 2                                        |        1 |
+| SIGMOD Conference                                                |     2428 |
+| SIGMOD Record                                                    |     1425 |
+| SIGMOD Workshop, Vol. 1                                          |       27 |
+| SIGMOD Workshop, Vol. 2                                          |        7 |
+| Workshop on Data Abstraction, Databases and Conceptual Modelling |       58 |
++------------------------------------------------------------------+----------+
+VLDB : Very Large Databases Conference (source id = vldb) 3052
++-------------------+----------+
+| source            | count(*) |
++-------------------+----------+
+| NULL              |       31 |
+| VLDB              |     2444 |
+| VLDB J.           |      513 |
+| VLDB PhD Workshop |       32 |
+| VLDB Surveys      |       32 |
++-------------------+----------+
+
+Tier 2 conferences
+
+ECML PKDD: The European Conference on Machine Learning and Principles
+and Practice of Knowledge Discovery in Databases (source_id=ecml, pkdd)
+819, 1047
+WebDB: International Workshop on Web and Database (source_id=webdb) 239
+WSDM: The ACM International Conference on Web Search and Data Mining (source_id=wsdm)
+204
+MDM: International Conference on Mobile Data Management (source_id=mdm)
+672
+DCC: Data Compression Conference (source_id=dcc)
+3004
+
+Journals
+
+ACM Transactions on Database Systems (source_id=tods) 771
+ACM Transactions on Knowledge Discovery from Data 
+Data Mining and Knowledge Discovery (source_id=dmkd) 88
+IEEE Transactions on Knowledge and Data Engineering (source_id=tkde), 2129
+
+CREATE OR REPLACE VIEW dblp_pub_db AS SELECT * FROM dblp_pub_new WHERE source_id like 'edbt' OR source_id like 'icde'OR source_id like 'icdm'OR source_id like 'icdt'OR source_id like 'icml'OR source_id like 'kdd'OR source_id like 'sdm'OR source_id like 'pods'OR source_id like 'sigmod'OR source_id like 'vldb'OR source_id like 'ecml'OR source_id like 'pkdd'OR source_id like 'wsdm'OR source_id like 'dcc'OR source_id like 'tkde'OR source_id like 'dmkd'OR source_id like 'tods'
