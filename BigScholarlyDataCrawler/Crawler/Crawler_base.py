@@ -74,14 +74,14 @@ class Crawler:
 					
 			abstract = abstract.replace('\r\n',' ')
 			f2.write(str(abstract))
-			f2.write(";\n")
+			f2.write(";;;\n")
 
 
 	def update_abstract_database(self):
 		try:
 			cursor= self.sql_cnx.cursor()
 			f = open("abstract.txt","r")
-			paper = f.read().split(';')
+			paper = f.read().split(';;;')
 			i = 0
 			while i < len(paper):
 				title = paper[i].split('\n')[1]
