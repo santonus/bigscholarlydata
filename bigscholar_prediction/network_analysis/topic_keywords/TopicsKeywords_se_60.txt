@@ -1,0 +1,61 @@
+topic_id	GROUP_CONCAT(keyword ORDER BY prob desc)
+Topic_0	framework ,applic ,adapt ,architectur ,model ,implement ,support ,configur ,flexibl ,provid ,propos ,platform ,gener ,enabl ,present
+Topic_1	model ,control ,paradigm ,net ,petri ,flow ,system ,support ,represent ,oo ,gener ,control, ,construct ,present,power 
+Topic_10	servic ,provid ,integr ,system ,inform ,services. ,health ,manag ,infrastructur ,web ,medic ,support ,patient ,custom ,composit
+Topic_11	chang ,(2) ,(1) ,featur ,(3) ,locat ,lazi ,data-flow ,present ,list ,impact ,changes. ,comment ,region,propag 
+Topic_12	model ,reliabl ,check ,polici ,formula ,strict ,regular ,inconsist ,checker ,annot ,translat ,incorrect ,approach ,verif ,propos
+Topic_13	. ,ontolog ,navig ,publish ,2 ,1 ,results: ,method: ,checkpoint ,idiom ,context: ,conclusion: ,semant,objective: ,inform 
+Topic_14	fault ,workflow ,local ,toler ,faults. ,faulti ,item ,de ,effect ,naiv ,faults, ,score ,inject ,crisi ,credit
+Topic_15	rule ,infer ,mine ,problem ,associ ,logic, ,approach ,logic ,migrat ,set ,rules. ,output ,fuzzi ,frame ,encod
+Topic_16	develop ,qualiti ,improv ,evalu ,project ,product ,effort ,assess ,requir ,industri ,cost ,estim ,result ,process ,approach
+Topic_17	api ,librari ,usag ,client ,hierarchi ,ssa ,sketch ,procedures. ,anomali ,parallelism. ,libraries. ,usage. ,modal ,inference,,definitions, 
+Topic_18	manag ,knowledg ,project ,success ,factor ,question ,organ ,studi ,develop ,compani ,answer ,survey,relationship ,innov ,import 
+Topic_19	secur ,mobil ,network ,agent ,protocol ,commun ,devic ,comput ,propos ,distribut ,wireless ,access ,provid ,messag ,present
+Topic_2	techniqu ,program ,approach ,test ,static ,detect ,case ,result ,execut ,evalu ,select ,effect ,show ,present ,gener
+Topic_20	modul ,pointer ,game ,open ,partit ,kernel ,-calculu ,calculus. ,vendor ,linux ,compact ,modules. ,indirect ,send,proxi 
+Topic_21	error ,fals ,updat ,action ,imposs ,reachabl ,safe ,errors. ,correct ,expressions. ,true,redund ,imprecis ,debugging, ,automot 
+Topic_22	custom ,lock ,packag ,spreadsheet ,cell ,avail ,time ,subsystem ,templat ,stabil ,slow ,respons ,hundr ,gss ,intrus
+Topic_23	studi ,result ,effect ,experi ,empir ,report ,perform ,impact ,investig ,show ,mainten ,found ,subject ,find ,conduct
+Topic_24	visual ,monitor ,embed ,revers ,view ,complianc ,engin ,side ,requir ,reconstruct ,macro ,viewpoint ,legal ,goal ,views.
+Topic_25	vulner ,stack ,repair ,patch ,boundari ,preced ,worst-cas ,overflow ,hypertext ,detail. ,worst ,time ,incom ,crash ,differenti
+Topic_26	clone ,standard ,vote ,trade ,binari ,(ii) ,(i) ,detect ,copi ,smell ,code ,live ,format ,(iii) ,adher
+Topic_27	distribut ,task ,schedul ,server ,resourc ,perform ,alloc ,time ,taxonomi ,execut ,coordin ,client ,box ,(b),(a) 
+Topic_28	test ,gener ,execut ,case ,path ,coverag ,set ,input ,approach ,ml ,automat ,symbol ,present ,invari,behavior 
+Topic_29	model ,semant ,concurr ,state ,time ,properti ,object ,constraint ,relat ,express ,behavior ,tempor ,queri ,approach ,present
+Topic_3	develop ,design ,requir ,tool ,specif ,support ,process ,approach ,system ,formal ,method ,methodolog ,integr ,describ ,model
+Topic_30	model ,propos ,variabl ,uml ,model. ,thread ,approach ,diagram ,perform ,models. ,inherit ,case ,requir ,present ,metamodel
+Topic_31	decis ,model ,make ,predict ,event ,support ,complex ,reason ,effort ,decisions. ,decision-mak ,choic ,altern ,events.,decid 
+Topic_32	oper ,synchron ,enforc ,primit ,style ,pure ,mode ,manipul ,alias ,window ,multimedia ,actor ,parallel ,interconnect,command 
+Topic_33	metric ,higher-ord ,coupl ,evalu ,parametr ,correl ,set ,complex ,argument ,valid ,propos ,parameter ,unif,measur ,iter 
+Topic_34	method ,propos ,estim ,result ,imag ,show ,probabl ,paramet ,linear ,number ,calcul ,valu ,robust,obtain ,experiment 
+Topic_35	attack ,handl ,log ,except ,detect ,recoveri ,string ,rational ,javascript ,architectur ,malici ,automaton ,audit ,token ,pascal
+Topic_36	social ,commun ,onlin ,user ,trust ,media ,virtual ,interact ,human ,behavior ,studi ,role ,intent,inform ,influenc 
+Topic_37	failur ,reliabl ,classif ,classifi ,record ,predict ,accuraci ,similar ,conserv ,miss ,result ,set ,learn ,field ,estim
+Topic_38	group ,work ,support ,particip ,inform ,studi ,member ,interact ,commun ,collabor ,share ,meet ,individu ,discuss,creativ 
+Topic_39	code ,languag ,program ,implement ,java ,design ,compil ,interfac ,develop ,support ,programm ,object ,tool ,polymorph ,featur
+Topic_4	class ,pattern ,dynam ,structur ,graph ,design ,search ,depend ,static ,recurs ,present ,approach ,call ,slice,program 
+Topic_40	web ,inform ,conflict ,map ,warn ,user ,site ,page ,applications. ,web-bas ,world ,resolv ,present ,content ,wide
+Topic_41	transact ,market ,electron ,discoveri ,internet ,e-commerc ,bank ,commerc ,supplier ,financi ,privat ,voic ,push ,partner ,enorm
+Topic_42	organ ,organiz ,design ,implement ,theori ,enterpris ,plan ,case ,system ,align ,proposit ,innov ,adopt ,global,erp 
+Topic_43	compon ,reus ,safeti ,components. ,reusabl ,system ,component-bas ,repositori ,interprocedur ,develop ,components, ,approach ,depend ,certif ,systems,
+Topic_44	system ,xml ,intellig ,corpor ,alia ,artifici ,: ,inform ,databas ,sql ,law ,integr ,schema ,ownership,event-bas 
+Topic_45	scheme ,memori ,access ,share ,virtual ,storag ,processor ,perform ,machin ,signatur ,propos ,instruct ,array ,protect,hardwar 
+Topic_46	optim ,problem ,solut ,bound ,time ,perform ,minim ,alloc ,solv ,number ,comput ,stream ,network ,delay ,result
+Topic_47	develop ,practic ,studi ,collabor ,discuss ,challeng ,research ,agil ,understand ,field ,work ,review ,inform ,technolog ,identifi
+Topic_48	traceabl ,merg ,link ,alloc ,concept ,scalar ,eleg ,concis ,render ,gui ,bid ,run-tim ,pervas ,field.,explored. 
+Topic_49	parallel ,document ,digit ,retriev ,text ,video ,index ,inform ,comput ,match ,contain ,documents. ,watermark ,recognit,perform 
+Topic_5	program ,type ,languag ,abstract ,proof ,function ,structur ,formal ,logic ,express ,construct ,semant ,specif ,correct ,transform
+Topic_50	inform ,govern ,suppli ,firm ,price ,market ,competit ,public ,busi ,strategi ,invest ,econom ,chain ,adopt ,industri
+Topic_51	defect ,cluster ,algorithm ,node ,perform ,inspect ,result ,energi ,show ,number ,benchmark ,consumpt ,compar ,predict,algorithms. 
+Topic_52	aspect ,risk ,concern ,aspect-ori ,separ ,modular ,crosscut ,join ,context-fre ,pointcut ,mechan ,weav ,tutori ,aop ,implicit
+Topic_53	content ,heap ,review ,refer ,organis ,garbag ,option ,expert ,author ,violat ,reason ,present ,display ,past ,made
+Topic_54	transform ,system ,atom ,paper ,prototyp ,conceptu ,problem ,year ,issu ,instrument ,discuss ,deal ,minitrack ,present ,approach
+Topic_55	bug ,version ,file ,fix ,releas ,artifact ,report ,predict ,histori ,develop ,tag ,recommend ,open ,multipl ,chang
+Topic_56	measur ,power ,attribut ,schema ,sort ,electr ,complex ,anim ,restructur ,non-funct ,unit ,scale ,leak ,units. ,cp
+Topic_57	process ,busi ,processes. ,interpret ,lambda ,definit ,model ,execut ,incomplet ,defin ,procedur ,activ ,support ,mutual ,concept
+Topic_58	product ,line ,negoti ,parser ,featur ,- ,core ,variabl ,products. ,mark ,cost. ,gener,famili ,cost ,asset 
+Topic_59	team ,learn ,student ,educ ,univers ,job ,skill ,teach ,train ,experi ,work ,project ,time ,scienc ,develop
+Topic_6	simul ,trace ,perform ,time ,request ,cach ,flow ,memori ,channel ,traffic ,resourc ,length ,queue ,fair,control 
+Topic_7	architectur ,evolut ,profil ,cloud ,track ,problem ,comput ,architecture. ,provid ,evolv ,architect ,target,present ,design ,context-sensit 
+Topic_8	network ,convers ,commun ,neural ,insid ,particip ,social ,public ,polit ,post ,worker ,reasoning, ,networks, ,messag,elect 
+Topic_9	grammar ,loop ,tree ,contract ,pars ,protocol ,spatial ,verif ,attribut ,specif ,verification, ,points-to ,equat ,control ,permiss

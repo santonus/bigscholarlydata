@@ -1,0 +1,51 @@
+
+Creating Time-Slices
+Setting up corpus
+using dtm-release
+Running DTM
+ db:
+Inserting Topic- Keyword DTM
+topic: 0.235*class + 0.204*object-ori + 0.105*attribut + 0.057*inherit + 0.028*oo + 0.022*classes. + 0.018*c++ + 0.017*relationship + 0.015*classes, + 0.015*relat + 0.010*class. + 0.010*tupl + 0.010*attributes. + 0.010*attributes, + 0.009*entiti key 
+topic: 0.235*class + 0.204*object-ori + 0.105*attribut + 0.057*inherit + 0.028*oo + 0.022*classes. + 0.018*c++ + 0.017*relationship + 0.015*classes, + 0.015*relat + 0.010*class. + 0.010*tupl + 0.010*attributes. + 0.010*attributes, + 0.009*entiti key  
+topic: 0.351*conceptu + 0.117*sens + 0.081*presented, + 0.048*metadata + 0.041*warehous + 0.029*multidimension + 0.026*event-bas + 0.025*complex. + 0.021*visualis + 0.021*alarm + 0.018*alloy + 0.013*complex + 0.010*i* + 0.009*dw + 0.008*analyzer, key  0.010*i* 
+topic: 0.243*class + 0.204*object-ori + 0.103*attribut + 0.054*inherit + 0.030*oo + 0.023*classes. + 0.018*c++ + 0.017*relationship + 0.015*classes, + 0.014*relat + 0.010*class. + 0.010*tupl + 0.010*attributes, + 0.010*attributes. + 0.009*entiti key 
+topic: 0.243*class + 0.204*object-ori + 0.103*attribut + 0.054*inherit + 0.030*oo + 0.023*classes. + 0.018*c++ + 0.017*relationship + 0.015*classes, + 0.014*relat + 0.010*class. + 0.010*tupl + 0.010*attributes, + 0.010*attributes. + 0.009*entiti key  
+topic: 0.354*conceptu + 0.118*sens + 0.076*presented, + 0.049*metadata + 0.042*warehous + 0.029*multidimension + 0.027*event-bas + 0.026*complex. + 0.021*visualis + 0.021*alarm + 0.018*alloy + 0.013*complex + 0.010*i* + 0.009*dw + 0.008*analyzer, key  0.010*i* 
+topic: 0.267*class + 0.186*object-ori + 0.103*attribut + 0.045*inherit + 0.038*oo + 0.025*classes. + 0.017*c++ + 0.016*relationship + 0.016*classes, + 0.014*relat + 0.010*class. + 0.010*attributes, + 0.009*attributes. + 0.009*tupl + 0.008*entiti key 
+topic: 0.267*class + 0.186*object-ori + 0.103*attribut + 0.045*inherit + 0.038*oo + 0.025*classes. + 0.017*c++ + 0.016*relationship + 0.016*classes, + 0.014*relat + 0.010*class. + 0.010*attributes, + 0.009*attributes. + 0.009*tupl + 0.008*entiti key  
+topic: 0.353*conceptu + 0.120*sens + 0.065*presented, + 0.052*metadata + 0.046*warehous + 0.030*multidimension + 0.028*event-bas + 0.026*complex. + 0.022*alarm + 0.022*visualis + 0.019*alloy + 0.013*complex + 0.010*i* + 0.009*dw + 0.008*olap key  0.010*i* 
+topic: 0.311*class + 0.150*object-ori + 0.113*attribut + 0.037*inherit + 0.030*oo + 0.028*classes. + 0.017*classes, + 0.016*relationship + 0.014*c++ + 0.014*relat + 0.011*attributes, + 0.011*attributes. + 0.010*class. + 0.009*tupl + 0.008*class, key 
+topic: 0.311*class + 0.150*object-ori + 0.113*attribut + 0.037*inherit + 0.030*oo + 0.028*classes. + 0.017*classes, + 0.016*relationship + 0.014*c++ + 0.014*relat + 0.011*attributes, + 0.011*attributes. + 0.010*class. + 0.009*tupl + 0.008*class, key  
+topic: 0.350*conceptu + 0.125*sens + 0.057*presented, + 0.054*metadata + 0.042*warehous + 0.031*multidimension + 0.028*event-bas + 0.026*complex. + 0.026*alarm + 0.022*alloy + 0.020*visualis + 0.012*complex + 0.011*i* + 0.010*dw + 0.009*olap key  0.011*i* 
+Inserting Doc Topic DTM
+
+Creating Time-Slices
+Setting up corpus
+using dtm-release
+Running DTM
+ db:
+Inserting Topic- Keyword DTM
+topic: 0.162*object + 0.107*object-ori + 0.077*class + 0.022*inherit + 0.018*orient + 0.015*objects. + 0.015*method + 0.012*hierarchi + 0.011*objects, + 0.011*persist + 0.011*support + 0.011*concept + 0.009*relationship + 0.009*c++ + 0.008*mechan key 
+topic: 0.162*object + 0.107*object-ori + 0.077*class + 0.022*inherit + 0.018*orient + 0.015*objects. + 0.015*method + 0.012*hierarchi + 0.011*objects, + 0.011*persist + 0.011*support + 0.011*concept + 0.009*relationship + 0.009*c++ + 0.008*mechan key  
+topic: 0.166*object + 0.109*object-ori + 0.082*class + 0.022*inherit + 0.019*orient + 0.015*method + 0.015*objects. + 0.012*hierarchi + 0.011*objects, + 0.011*persist + 0.010*support + 0.010*concept + 0.009*relationship + 0.009*c++ + 0.008*mechan key 
+topic: 0.166*object + 0.109*object-ori + 0.082*class + 0.022*inherit + 0.019*orient + 0.015*method + 0.015*objects. + 0.012*hierarchi + 0.011*objects, + 0.011*persist + 0.010*support + 0.010*concept + 0.009*relationship + 0.009*c++ + 0.008*mechan key  
+topic: 0.172*object + 0.107*object-ori + 0.093*class + 0.021*inherit + 0.019*orient + 0.015*method + 0.015*objects. + 0.013*hierarchi + 0.011*objects, + 0.011*persist + 0.010*support + 0.010*concept + 0.010*c++ + 0.009*relationship + 0.008*classes. key 
+topic: 0.172*object + 0.107*object-ori + 0.093*class + 0.021*inherit + 0.019*orient + 0.015*method + 0.015*objects. + 0.013*hierarchi + 0.011*objects, + 0.011*persist + 0.010*support + 0.010*concept + 0.010*c++ + 0.009*relationship + 0.008*classes. key  
+topic: 0.177*object + 0.107*class + 0.101*object-ori + 0.020*inherit + 0.020*orient + 0.016*method + 0.014*objects. + 0.013*hierarchi + 0.011*persist + 0.011*objects, + 0.010*c++ + 0.010*support + 0.009*concept + 0.009*classes. + 0.009*relationship key 
+topic: 0.177*object + 0.107*class + 0.101*object-ori + 0.020*inherit + 0.020*orient + 0.016*method + 0.014*objects. + 0.013*hierarchi + 0.011*persist + 0.011*objects, + 0.010*c++ + 0.010*support + 0.009*concept + 0.009*classes. + 0.009*relationship key  
+Inserting Doc Topic DTM
+Traceback (most recent call last):
+  File "driver.py", line 50, in <module>
+    dtm_db(model_dtm, db, corpus, dict_id, time_ranges, num_topics=num_topics)
+  File "/home/bigdataproj/rumana/Topic_Model/topicmodel/topics_db.py", line 40, in dtm_db
+    cur.execute("insert into DocTopic_DTM_se_"+str(num_topics)+" (paper_id,topic_id,prob) values (\""+paper_id+"\",\""+"Topic_"+str(topic_num)+"\",\""+str(prob)+"\");")
+  File "/opt/apps/Python-2.7.12/lib/python2.7/site-packages/mysql/connector/cursor.py", line 507, in execute
+    self._handle_result(self._connection.cmd_query(stmt))
+  File "/opt/apps/Python-2.7.12/lib/python2.7/site-packages/mysql/connector/connection.py", line 722, in cmd_query
+    result = self._handle_result(self._send_cmd(ServerCmd.QUERY, query))
+  File "/opt/apps/Python-2.7.12/lib/python2.7/site-packages/mysql/connector/connection.py", line 640, in _handle_result
+    raise errors.get_exception(packet)
+mysql.connector.errors.IntegrityError: 1062 (23000): Duplicate entry '060932CB-Topic_0' for key 'PRIMARY'
+Creating Time-Slices
+Setting up corpus
+Running DTM
