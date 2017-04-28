@@ -87,7 +87,7 @@ class Crawler:
 				title = paper[i].split('\n')[1]
 				title = title.replace("'","\\'")
 				abstract = ''
-				for line in paper[i].split('\n')[2:]
+				for line in paper[i].split('\n')[2:]:
 					abstract += line
 				abstract = abstract.replace("\n","")
 				abstract = abstract.replace("'","\\'")
