@@ -22,10 +22,13 @@ class Filter_database:
 			query = 'select venue_fullname, venue_shortname from Venues'
 			cursor1.execute(query)
 			for (venue_fullname, venue_shortname) in cursor1:
-				query1 = 'insert into dblp_pub_se select * from dblp_pub_all where journal like "%' + venue_shortname +'%"; insert into dblp_pub_se select * from dblp_pub_all where journal like  "%' + venue_fullname +'%";'
+				query1 = 'insert into dblp_pub_se select * from dblp_pub_all where journal like "%' + venue_shortname +'%"'
 				cursor2.execute(query1)
-				self.sql_cnx.commit()
-				query1 = 'insert into Aminer_pub_se select * from Aminer_pub_all where journal like "%' + venue_shortname +'%"; insert into Aminer_pub_se select * from Aminer_pub_all where journal like  "%' + venue_fullname +'%";'
+				query1 = 'insert into dblp_pub_se select * from dblp_pub_all where journal like  "%' + venue_fullname +'%"'
+				cursor2.execute(query1)
+				query1 = 'insert into Aminer_pub_se select * from Aminer_pub_all where journal like "%' + venue_shortname +'%"'
+				cursor2.execute(query1)
+				query1 = 'insert into Aminer_pub_se select * from Aminer_pub_all where journal like  "%' + venue_fullname +'%"'
 				cursor2.execute(query1)
 				self.sql_cnx.commit()
 			cursor2.close()
@@ -39,11 +42,11 @@ class Filter_database:
 		try:
 			cursor= self.sql_cnx.cursor()
 			query = 'create table cite_se2 like cite_all'
-			cursor.execute()
+			cursor.execute(query)
 			self.sql_cnx.commit()
-			query = 'insert into cite_se2 select * from cite_all where index_id in (select index_id from pub_se);'
+			query = 'insert into cite_se2 select * from cite_all where index_id in (select index_id from Aminer_pub_se);'
 			cursor.execute()	
-			self.sql_cnx.commit()	
+			self.sql_cnx.commit(query)	
 
 		except Error as e:
 			print e
@@ -55,7 +58,7 @@ class Filter_database:
 	def extract_new_data(self):
 		try:
 			cursor= self.sql_cnx.cursor()
-			query = 'create table pub_delta as Aminer_pub_se; insert into pub_delta select * from Aminer_pub_se where title not in (select title from pub_se); alter table pub_delta add ee varchar(64);insert into pub_delta(title, author, author_sequence_number, year, venue, ee) select title, author, author_sequence_number, year, journal, ee from dblp_pub_se where title not in (select title from pub_se); alter table pub_delta change column ee doi varchar(64);'
+			query = 'create table pub_delta like Aminer_pub_se; insert into pub_delta select * from Aminer_pub_se where title not in (select title from pub_se); alter table pub_delta add ee varchar(64);insert into pub_delta(title, author, author_sequence_number, year, venue, ee) select title, author, author_sequence_number, year, journal, ee from dblp_pub_se where title not in (select title from pub_se); alter table pub_delta change column ee doi varchar(64);'
 			cursor.execute(query)
 			self.sql_cnx.commit()
 		
