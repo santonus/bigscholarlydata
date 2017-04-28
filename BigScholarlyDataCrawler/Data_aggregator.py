@@ -143,7 +143,7 @@ class Update_raw_database:
 			for i in xrange(len(ref)):
 				print('insert into cite_all( index_id, reference_index) values', file = file2)
 				print('("', index,'","', ref[i],'");',file=file2)
-		print('Delete from cite_all where reference_index = " NULL "' , file = file2)
+		print('delete from cite_all where reference_index = " NULL ";' , file = file2)
 		elem = ['index_id', 'reference_index']
 		for el in elem:
 			print('update dblp_pub_all set '+ el + ' = trim(' + el + ');', file = file2)
@@ -192,16 +192,21 @@ class Update_raw_database:
 
 
 	def update_database(self):
-		os.chdir("temp")
-		cursor= self.sql_cnx.cursor()
-		query = 'source dblp.sql; source Aminer.sql; source citation.sql; source Author.sql;'
-		cursor.execute(query)
+		cursor = self.sql_cnx.cursor()
+		for line in open('./temp/dblp.sql'):
+			cursor.execute(line)
+		for line in open('./temp/Aminer.sql'):
+			cursor.execute(line)
+		for line in open('./temp/citation.sql'):
+			cursor.execute(line)
+		for line in open('./temp/Author.sql'):
+			cursor.execute(line)
 		self.sql_cnx.commit()
 		cursor.close()
 
 
 	def update_venue_rank(self, CORE_filename):
-		cursor= self.sql_cnx.cursor()
+		cursor = self.sql_cnx.cursor()
 		query1 = 'create table venue_rank (venue_fullname, venue_shortname, rank, field-of_study1, field_of_study2, field_of_study3);'
 		cursor.execute(query1)
 		cnx.commit()
