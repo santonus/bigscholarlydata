@@ -7,7 +7,7 @@ class Update_raw_database:
 
 	def __init__(self, sql_cnx):
 		self.sql_cnx = sql_cnx
-		# os.mkdir("temp")		
+		os.mkdir("temp")		
 
 	def XML_file_cleaning(self, XML_filename):
 		f = open(XML_filename, "r")
@@ -209,8 +209,8 @@ class Update_raw_database:
 		cursor = self.sql_cnx.cursor()
 		query1 = 'create table venue_rank (venue_fullname, venue_shortname, rank, field-of_study1, field_of_study2, field_of_study3);'
 		cursor.execute(query1)
-		cnx.commit()
+		self.sql_cnx.commit()
 		query2 = 'load data infile' + CORE_filename + 'into table venue_rank fields terminated by "," lines terminated by "\n" '
 		cursor.execute(query2)
-		cnx.commit()
+		self.sql_cnx.commit()
 		cursor.close()
