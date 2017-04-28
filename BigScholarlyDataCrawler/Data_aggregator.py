@@ -141,8 +141,8 @@ class Update_raw_database:
 			if len(ref) == 0:
 				ref.append("NULL")
 			for i in xrange(len(ref)):
-				print('insert into cite_all( index_id, reference_index) values', file = file2)
-				print('("', index,'","', ref[i],'");',file=file2)
+				print('insert into cite_all( index_id, reference_index) values("', index,'","', ref[i],'");',file=file2)
+
 		print('delete from cite_all where reference_index = " NULL ";' , file = file2)
 		elem = ['index_id', 'reference_index']
 		for el in elem:
