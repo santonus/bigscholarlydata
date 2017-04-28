@@ -146,7 +146,7 @@ class Update_raw_database:
 		print('delete from cite_all where reference_index = " NULL ";' , file = file2)
 		elem = ['index_id', 'reference_index']
 		for el in elem:
-			print('update dblp_pub_all set '+ el + ' = trim(' + el + ');', file = file2)
+			print('update cite_all set '+ el + ' = trim(' + el + ');', file = file2)
 
 
 	def Author_to_sqldump(self, Author_filename):
