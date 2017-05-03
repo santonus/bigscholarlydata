@@ -33,6 +33,8 @@ class Crawler_citation:
 			refer_title = None
 		
 		finally:
+			if refer_title == '':
+				return None
 			return refer_title
 
 	def get_citation_IEEE(self, document):
