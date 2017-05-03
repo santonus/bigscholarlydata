@@ -4,6 +4,7 @@ from mysql.connector import Error
 import urllib2
 import requests
 import re
+import time
 import string
 from bs4 import BeautifulSoup as BS
 import xml.etree.ElementTree as ET
@@ -75,6 +76,7 @@ class Crawler:
 			abstract = abstract.replace('\r\n',' ')
 			f2.write(str(abstract))
 			f2.write(";;;\n")
+			time.sleep(5)
 
 
 	def update_abstract_database(self):
@@ -143,7 +145,7 @@ class Crawler:
 			refer_title = self.c_citation.get_citation_ACM(handle)
 			if refer_title is None:
 				handle = self.c_connect.establish_connection(title, "IEEE")
-				abstract = self.c_citation.get_citation_IEEE(handle)
+				refer_title = self.c_citation.get_citation_IEEE(handle)
 				if refer_title is None:
 					handle = self.c_connect.establish_connection(title, "Springer")
 					refer_title = self.c_citation.get_citation_Springer(handle)
