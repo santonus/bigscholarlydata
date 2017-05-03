@@ -87,8 +87,11 @@ class Crawler_citation:
 					refer = references_raw
 					refer = re.sub('<.*?>','',str(refer))	
 					refer_title += (refer.strip()+';;;')
+					contnue
 				refer = refer.group(1).strip()
 				refer_title += (refer + ';;;')
+			if refer_title == '':
+				return None
 			return refer_title
 
 		except:
