@@ -159,7 +159,7 @@ class Crawler:
 	def update_citation_database(self):
 		try:
 			cursor= self.sql_cnx.cursor()
-			query = 'create table cite_new ( title longtext not null primary key, refer_title longtext )'
+			query = 'create table cite_new ( title longtext not null, refer_title longtext )'
 			cursor.execute(query)
 			self.sql_cnx.commit()
 			f = open("refer.txt","r")
