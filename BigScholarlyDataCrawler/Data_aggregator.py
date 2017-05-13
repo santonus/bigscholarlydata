@@ -207,7 +207,7 @@ class Update_raw_database:
 
 	def update_venue_rank(self, CORE_filename):
 		cursor = self.sql_cnx.cursor()
-		query1 = 'create table venue_rank (venue_fullname, venue_shortname, rank, field-of_study1, field_of_study2, field_of_study3);'
+		query1 = 'create table venue_rank (venue_fullname varchar(500) not null, venue_shortname varchar(250), rank varchar(8) not null, field-of_study1 varchar(8), field_of_study2 varchar(8), field_of_study3 varchar(8));'
 		cursor.execute(query1)
 		self.sql_cnx.commit()
 		query2 = 'load data infile' + CORE_filename + 'into table venue_rank fields terminated by "," lines terminated by "\n" '
