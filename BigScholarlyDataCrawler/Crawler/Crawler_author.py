@@ -20,6 +20,8 @@ class Crawler_author:
 			author = None
 
 		finally:
+			if author == '':
+				return None
 			return author
 
 
