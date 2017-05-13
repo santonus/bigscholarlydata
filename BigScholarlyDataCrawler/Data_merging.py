@@ -9,13 +9,21 @@ class Merge_database:
 
 	def merge_database(self):
 		try:
-			cursor= self.sql_cnx.cursor()
-			query = 'SELECT @max := MAX(paper_id)+ 1 FROM pub_se; PREPARE stmt FROM "ALTER TABLE pub_se AUTO_INCREMENT = ?";EXECUTE stmt USING @max;DEALLOCATE PREPARE stmt;'
+			cursor= self.sql_cnx.cursor(buffered = True)
+			cursor2 = self.sql_cnx.cursor()
+			query = 'select title, year, doi, venue, abstract from pub_delta;'
 			cursor.execute(query)
-			self.sql_cnx.commit()
-			query = 'insert into pub_se(title, year, doi, venue, abstract) select title, year, doi, venue, abstract from pub_delta;'		
-			cursor.execute(query)
-			self.sql_cnx.commit()
+			for ( title, year, doi, venue, abstract ) in cursor:
+				paper_id = ''.join(random.SystemRandom().choice(string.ascii_uppercase + string.digits) for _ in range(8))
+				paper_id = 'S'+ paper_id
+				abstract = abstract.replace('"','\\"')
+				title = title.replace('"','\\"')
+				try:
+					query = 'insert into pub_se values("'+paper_id+'","'+title+'","'+year+'","'+doi+'","'+venue+'","'+abstract+'")'
+					cursor2.execute(query)
+					self.sql_cnx.commit()
+				except:
+					pass
 
 		except Error as e:
 			print e
