@@ -22,13 +22,13 @@ class Filter_database:
 			query = 'select venue_fullname, venue_shortname from Venues'
 			cursor1.execute(query)
 			for (venue_fullname, venue_shortname) in cursor1:
-				query1 = 'insert into dblp_pub_se select * from dblp_pub_all where journal like "%' + venue_shortname +'%"'
+				query1 = 'insert into dblp_pub_se select * from dblp_pub_all where journal like CONCAT('%',SOUNDEX("' + venue_shortname +'"),'%')'
 				cursor2.execute(query1)
-				query1 = 'insert into dblp_pub_se select * from dblp_pub_all where journal like  "%' + venue_fullname +'%"'
+				query1 = 'insert into dblp_pub_se select * from dblp_pub_all where journal like CONCAT('%',SOUNDEX("' + venue_fullname +'"),'%')'
 				cursor2.execute(query1)
-				query1 = 'insert into Aminer_pub_se select * from Aminer_pub_all where journal like "%' + venue_shortname +'%"'
+				query1 = 'insert into Aminer_pub_se select * from Aminer_pub_all where journal like CONCAT('%',SOUNDEX("' + venue_shortname +'"),'%')'
 				cursor2.execute(query1)
-				query1 = 'insert into Aminer_pub_se select * from Aminer_pub_all where journal like  "%' + venue_fullname +'%"'
+				query1 = 'insert into Aminer_pub_se select * from Aminer_pub_all where journal like  CONCAT('%',SOUNDEX("' + venue_fullname +'"),'%')'
 				cursor2.execute(query1)
 				self.sql_cnx.commit()
 			cursor2.close()
